@@ -33,7 +33,7 @@
       }
     ],
     "prettier/prettier": [
-      "error",
+      "warn",
       {
         "printWidth": 100,
         "trailingComma": "all",

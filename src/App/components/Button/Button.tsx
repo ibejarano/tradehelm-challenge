@@ -1,7 +1,7 @@
 import React from "react";
 
 interface Props {
-  action: () => void;
+  action: VoidFunction;
   text: string;
 }
 

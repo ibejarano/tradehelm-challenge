@@ -2,16 +2,16 @@ import * as React from "react";
 
 import styles from "./App.module.scss";
 
-import Button from "../App/components/Button";
 import ItemList from "../App/components/ItemList";
 import Item from "../App/components/Item";
 import Modal from "../App/components/Modal";
+import AddItem from "../App/components/AddItem";
 
 import { IItem } from "../types/Item";
 
 const App: React.FC = () => {
   const [modalOpen, toggleModal] = React.useState<boolean>(false);
-  const [items, setitems] = React.useState<IItem[]>([
+  const [items, setItems] = React.useState<IItem[]>([
     {
       text: "Hola mundo",
       id: "123",
@@ -23,11 +23,13 @@ const App: React.FC = () => {
   ]);
 
   const handleDelete = (deleteId: string) => {
-    setitems((prevItems) => prevItems.filter((item) => item.id != deleteId));
+    setItems((prevItems) => prevItems.filter((item) => item.id != deleteId));
   };
 
-  const handleAddItem = () => {
-    setitems((prevItems) => prevItems.concat({ id: "678", text: "Agarrao" }));
+  const handleAddItem = (text: string) => {
+    setItems((prevItems) =>
+      prevItems.concat({ id: (Math.random() * 1000000).toFixed(2), text })
+    );
   };
 
   return (
@@ -44,7 +46,7 @@ const App: React.FC = () => {
         ))}
       </ItemList>
       <Modal modalOpen={modalOpen} toggleModal={toggleModal}>
-        Estoy en el modal!
+        <AddItem onAddItem={handleAddItem} />
       </Modal>
     </main>
   );
