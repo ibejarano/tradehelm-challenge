@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import styles from "./App.module.scss";
+import api from "../api";
 
 import ItemList from "../App/components/ItemList";
 import Item from "../App/components/Item";
@@ -11,26 +12,29 @@ import { IItem } from "../types/Item";
 
 const App: React.FC = () => {
   const [modalOpen, toggleModal] = React.useState<boolean>(false);
-  const [items, setItems] = React.useState<IItem[]>([
-    {
-      text: "Hola mundo",
-      id: "123",
-    },
-    {
-      text: "Adios mundo",
-      id: "456",
-    },
-  ]);
+  const [items, setItems] = React.useState<IItem[]>([]);
+  const [loading, setLoading] = React.useState<boolean>(true);
 
   const handleDelete = (deleteId: string) => {
-    setItems((prevItems) => prevItems.filter((item) => item.id != deleteId));
+    api.deleteById(deleteId).then((id) => {
+      setItems((prevItems) => prevItems.filter((item) => item.id != id));
+    });
   };
 
   const handleAddItem = (text: string) => {
-    setItems((prevItems) =>
-      prevItems.concat({ id: (Math.random() * 1000000).toFixed(2), text })
-    );
+    api.addItem(text).then((newItem) => {
+      setItems((prevItems) => prevItems.concat(newItem));
+    });
   };
+
+  React.useEffect(() => {
+    api.getItems().then((data) => {
+      setItems(data);
+      setLoading(false);
+    });
+  }, []);
+
+  if (loading) return <h3>Loading...</h3>;
 
   return (
     <main className={styles.container}>
