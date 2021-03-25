@@ -7,13 +7,12 @@
   height: 100%;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
-  overflow: hidden;
 
   & article {
     background-color: #fefefe;
-    margin: 25% auto;
+    margin: 35vh auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 50%;
+    width: 400px;
   }
 }

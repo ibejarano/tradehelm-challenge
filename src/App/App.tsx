@@ -62,7 +62,7 @@ const App: React.FC = () => {
           </Item>
         ))}
       </ItemList>
-      <Button action={toggleModal} text="Add Item" />
+      <Button action={toggleModal} text="Add Item" autoFocus={true} />
       <Modal modalOpen={modalOpen}>
         <AddItem
           onAddItem={handleAddItem}

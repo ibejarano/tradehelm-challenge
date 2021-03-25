@@ -8,13 +8,13 @@ interface Props {
 
 const Modal: React.FC<Props> = ({ children, modalOpen }) => {
   return (
-    <div>
+    <>
       {modalOpen && (
         <section className={styles.container}>
           <article>{children}</article>
         </section>
       )}
-    </div>
+    </>
   );
 };
 
