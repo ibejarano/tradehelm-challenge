@@ -4,9 +4,7 @@ const LOCAL_STORAGE_NAME = "tradehelm-challenge-api";
 
 let db: IItem[] = [];
 
-const localSave: string | null = window.localStorage.getItem(
-  LOCAL_STORAGE_NAME
-);
+const localSave: string | null = window.localStorage.getItem(LOCAL_STORAGE_NAME);
 
 if (localSave) {
   db.push(...JSON.parse(localSave));
@@ -18,14 +16,14 @@ function generateId() {
 
 export default {
   getItems: (): Promise<IItem[]> => {
-    return new Promise<IItem[]>((resolve, reject) => {
+    return new Promise<IItem[]>((resolve, _) => {
       setTimeout(() => {
         resolve(db);
       }, 1000);
     });
   },
   addItem: (text: IItem["text"]): Promise<IItem> => {
-    return new Promise<IItem>((resolve, reject) => {
+    return new Promise<IItem>((resolve, _) => {
       setTimeout(() => {
         const newItem: IItem = { id: generateId(), text };
 
@@ -38,7 +36,7 @@ export default {
   },
 
   addMultipleItem: (textList: IItem["text"][]): Promise<IItem[]> => {
-    return new Promise<IItem[]>((resolve, reject) => {
+    return new Promise<IItem[]>((resolve, _) => {
       setTimeout(() => {
         const newItems: IItem[] = textList.map((text) => ({
           id: generateId(),
@@ -54,7 +52,7 @@ export default {
   },
 
   deleteById: (id: string): Promise<IItem["id"]> => {
-    return new Promise<IItem["id"]>((resolve, reject) => {
+    return new Promise<IItem["id"]>((resolve, _) => {
       setTimeout(() => {
         db = db.filter((item) => item.id != id);
         window.localStorage.setItem(LOCAL_STORAGE_NAME, JSON.stringify(db));

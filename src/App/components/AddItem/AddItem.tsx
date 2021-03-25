@@ -1,19 +1,15 @@
 import React from "react";
 
-import styles from "./AddItem.module.scss";
-
 import Button from "../Button";
+
+import styles from "./AddItem.module.scss";
 interface Props {
   onAddItem: (text: string) => void;
   onAddMultiple: (textList: string[]) => void;
   toggleModal: () => void;
 }
 
-const AddItem: React.FC<Props> = ({
-  onAddItem,
-  onAddMultiple,
-  toggleModal,
-}) => {
+const AddItem: React.FC<Props> = ({ onAddItem, onAddMultiple, toggleModal }) => {
   const [text, setText] = React.useState<string>("");
 
   const handleAdd = () => {
@@ -45,16 +41,16 @@ const AddItem: React.FC<Props> = ({
       <p>Hint: Type comma ( , ) between entries to add multiple items.</p>
       <input
         autoFocus
-        type="text"
         placeholder="Type here..."
+        type="text"
         value={text}
         onChange={handleChange}
       />
       <div>
-        <Button onClick={toggleModal} variant="secondary">
+        <Button variant="secondary" onClick={toggleModal}>
           Cancel
         </Button>
-        <Button onClick={handleAdd} disabled={!(text.length > 0)}>
+        <Button disabled={!(text.length > 0)} onClick={handleAdd}>
           Add
         </Button>
       </div>

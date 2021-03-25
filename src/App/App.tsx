@@ -1,15 +1,14 @@
 import * as React from "react";
 
-import styles from "./App.module.scss";
 import api from "../api";
-
 import ItemList from "../App/components/ItemList";
 import Item from "../App/components/Item";
 import Modal from "../App/components/Modal";
 import AddItem from "../App/components/AddItem";
 import Button from "../App/components/Button";
-
 import { IItem } from "../types/Item";
+
+import styles from "./App.module.scss";
 
 const App: React.FC = () => {
   const [modalOpen, setModalOpen] = React.useState<boolean>(false);
@@ -62,14 +61,14 @@ const App: React.FC = () => {
           </Item>
         ))}
       </ItemList>
-      <Button onClick={toggleModal} variant="primary" >
+      <Button variant="primary" onClick={toggleModal}>
         Add Item
       </Button>
       <Modal modalOpen={modalOpen}>
         <AddItem
+          toggleModal={toggleModal}
           onAddItem={handleAddItem}
           onAddMultiple={handleAddMultipleItem}
-          toggleModal={toggleModal}
         />
       </Modal>
     </main>
