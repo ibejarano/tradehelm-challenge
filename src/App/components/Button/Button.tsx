@@ -1,29 +1,14 @@
 import React from "react";
 
 import styles from "./Button.module.scss";
-interface Props {
-  action: VoidFunction;
-  disabled?: boolean;
-  text: string;
-  variant?: boolean;
-  autoFocus?: boolean;
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: "primary" | "secondary";
 }
 
-const Button: React.FC<Props> = ({
-  action,
-  text,
-  disabled = false,
-  variant = false,
-  autoFocus = false,
-}) => {
+const Button: React.FC<Props> = ({ children, variant = "primary", ...props }) => {
   return (
-    <button
-      onClick={action}
-      className={variant ? styles.secondary : styles.primary}
-      disabled={disabled}
-      autoFocus={autoFocus}
-    >
-      {text}
+    <button className={`${styles.container} ${styles[variant]}`} {...props}>
+      {children}
     </button>
   );
 };
