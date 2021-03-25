@@ -25,6 +25,7 @@ const AddItem: React.FC<Props> = ({ onAddItem, toggleModal }) => {
     <div className={styles.container}>
       <h3>Add item</h3>
       <input
+        autoFocus
         type="text"
         placeholder="Type here..."
         value={text}
