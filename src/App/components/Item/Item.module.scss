@@ -6,7 +6,8 @@
   margin: 0 0 8px 0;
   padding: 8px;
   background: white;
-  box-shadow: 0px 2px 1px rgba(0,0,0,0.2);
+  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2);
+  animation: slide-up 1s ease;
 
   & button {
     width: 15%;
@@ -15,6 +16,13 @@
     color: grey;
     font-weight: 600;
     font-style: italic;
+    cursor: pointer;
+    transition: all 0.2s linear;
+
+    &:hover {
+      background: #ccc;
+      color: black;
+    }
   }
 
   & p {
@@ -24,5 +32,35 @@
     margin: 0;
     color: grey;
     font-weight: 700;
+  }
+
+  &.removing {
+    animation: fade-out 1s linear;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+
+  100% {
+    opacity: 0;
+    height: 0px;
+    margin: 0px;
+    padding: 0px;
+    transform: translateX(-80px);
   }
 }

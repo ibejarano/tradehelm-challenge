@@ -6,10 +6,19 @@ interface Props {
 }
 
 const Item: React.FC<Props> = ({ children, onDelete }) => {
+  const [removing, setRemoving] = React.useState<boolean>(false);
+
   return (
-    <li className={styles.container}>
+    <li className={`${styles.container} ${removing && styles.removing}`}>
       <p>{children}</p>
-      <button onClick={onDelete}>delete</button>
+      <button
+        onClick={() => {
+          setRemoving(true);
+          onDelete();
+        }}
+      >
+        delete
+      </button>
     </li>
   );
 };
