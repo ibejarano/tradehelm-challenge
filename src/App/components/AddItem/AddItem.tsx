@@ -33,8 +33,14 @@ const AddItem: React.FC<Props> = ({
     setText(event.currentTarget.value);
   };
 
+  const handleKeyPress: React.KeyboardEventHandler = (event): void => {
+    if (event.key == "Enter") {
+      handleAdd();
+    }
+  };
+
   return (
-    <div className={styles.container}>
+    <div className={styles.container} tabIndex={0} onKeyPress={handleKeyPress}>
       <h3>Add item(s)</h3>
       <p>Hint: Type comma ( , ) between entries to add multiple items.</p>
       <input
