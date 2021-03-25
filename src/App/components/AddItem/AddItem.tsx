@@ -1,5 +1,7 @@
 import React from "react";
 
+import styles from "./AddItem.module.scss";
+
 import Button from "../Button";
 interface Props {
   onAddItem: (text: string) => void;
@@ -10,6 +12,7 @@ const AddItem: React.FC<Props> = ({ onAddItem, toggleModal }) => {
   const [text, setText] = React.useState<string>("");
 
   const handleAdd = () => {
+    if (text == "") return;
     onAddItem(text);
     setText("");
   };
@@ -19,7 +22,7 @@ const AddItem: React.FC<Props> = ({ onAddItem, toggleModal }) => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <h3>Add item</h3>
       <input
         type="text"
@@ -27,8 +30,14 @@ const AddItem: React.FC<Props> = ({ onAddItem, toggleModal }) => {
         value={text}
         onChange={handleChange}
       />
-      <Button action={handleAdd} text="Add" />
-      <Button action={toggleModal} text="Cancel" />
+      <div>
+        <Button
+          action={handleAdd}
+          text="Add"
+          disabled={text.length == 0 ? true : false}
+        />
+        <Button action={toggleModal} text="Cancel" />
+      </div>
     </div>
   );
 };
