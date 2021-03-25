@@ -1,6 +1,11 @@
 .container {
-  width: 300px;
+  width: 360px;
   margin: 0 auto;
+
+  & p {
+    color: grey;
+    font-size: 13px;
+  }
 
   & input {
     width: 98%;

@@ -37,6 +37,22 @@ export default {
     });
   },
 
+  addMultipleItem: (textList: IItem["text"][]): Promise<IItem[]> => {
+    return new Promise<IItem[]>((resolve, reject) => {
+      setTimeout(() => {
+        const newItems: IItem[] = textList.map((text) => ({
+          id: generateId(),
+          text,
+        }));
+
+        db.push(...newItems);
+        window.localStorage.setItem(LOCAL_STORAGE_NAME, JSON.stringify(db));
+
+        resolve(newItems);
+      }, 1000);
+    });
+  },
+
   deleteById: (id: string): Promise<IItem["id"]> => {
     return new Promise<IItem["id"]>((resolve, reject) => {
       setTimeout(() => {

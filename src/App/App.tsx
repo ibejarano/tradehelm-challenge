@@ -29,13 +29,19 @@ const App: React.FC = () => {
     });
   };
 
+  const handleAddMultipleItem = (textList: string[]) => {
+    api.addMultipleItem(textList).then((newItems) => {
+      setItems((prevItems) => prevItems.concat(...newItems));
+      toggleModal();
+    });
+  };
+
   const toggleModal = () => {
     setModalOpen((prev) => !prev);
   };
 
   React.useEffect(() => {
     api.getItems().then((data) => {
-      console.log("pinto effect");
       setItems([...data]);
       setLoading(false);
     });
@@ -58,7 +64,11 @@ const App: React.FC = () => {
       </ItemList>
       <Button action={toggleModal} text="Add Item" />
       <Modal modalOpen={modalOpen}>
-        <AddItem onAddItem={handleAddItem} toggleModal={toggleModal} />
+        <AddItem
+          onAddItem={handleAddItem}
+          onAddMultiple={handleAddMultipleItem}
+          toggleModal={toggleModal}
+        />
       </Modal>
     </main>
   );
