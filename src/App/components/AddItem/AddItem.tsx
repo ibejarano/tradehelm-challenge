@@ -32,12 +32,12 @@ const AddItem: React.FC<Props> = ({ onAddItem, toggleModal }) => {
         onChange={handleChange}
       />
       <div>
+        <Button action={toggleModal} text="Cancel" variant={true} />
         <Button
           action={handleAdd}
           text="Add"
           disabled={text.length == 0 ? true : false}
         />
-        <Button action={toggleModal} text="Cancel" />
       </div>
     </div>
   );

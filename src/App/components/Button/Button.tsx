@@ -5,11 +5,21 @@ interface Props {
   action: VoidFunction;
   disabled?: boolean;
   text: string;
+  variant?: boolean;
 }
 
-const Button: React.FC<Props> = ({ action, text, disabled = false }) => {
+const Button: React.FC<Props> = ({
+  action,
+  text,
+  disabled = false,
+  variant = false,
+}) => {
   return (
-    <button onClick={action} className={styles.container} disabled={disabled}>
+    <button
+      onClick={action}
+      className={variant ? styles.secondary : styles.primary}
+      disabled={disabled}
+    >
       {text}
     </button>
   );
