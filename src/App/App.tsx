@@ -35,7 +35,8 @@ const App: React.FC = () => {
 
   React.useEffect(() => {
     api.getItems().then((data) => {
-      setItems(data);
+      console.log("pinto effect");
+      setItems([...data]);
       setLoading(false);
     });
   }, []);
