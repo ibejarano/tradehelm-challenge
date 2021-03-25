@@ -1,14 +1,17 @@
 ![Tradehelm](./public/logo.svg "TradeHelm")
 
+
+# [Live DEMO](https://tradehelm-challenge-one.vercel.app/)
+
 En el camino desde mi casa al supermercado, mi cerebro pierde la capacidad de retener información, por ende necesito hacer una aplicación que se encargue de esa difícil tarea. No, no puedo usar Google Keep, Evernote, nada, soy dev, la tengo que hacer, además esto es un challenge así que agarrá la pala.
 
+# Especificaciones
 ### La aplicación debe:
 * Mostrar un formulario para agregar elementos a la lista.
 * Poder borrar cada elemento de la lista independientemente.
 * Mantener los elementos de la lista cuando vuelvo a la aplicación después de cerrarla.
 
 > En caso de guardar los datos solo en `localStorage`, se debe simular un delay al cargar, guardar y borrar los elementos, como si interactuaramos con un servicio externo.
-
 ### Es necesario:
 * Cumplir con las reglas de linting del .eslintrc
 * Tipar el item de lista de supermercado.
